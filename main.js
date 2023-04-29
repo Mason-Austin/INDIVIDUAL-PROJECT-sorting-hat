@@ -1,5 +1,4 @@
 let students=[
-  
   {
     id:1,
     name:"Harry Potter",
@@ -12,9 +11,9 @@ const renderToDom= (divId, htmlToRender)=>{
   selectedDiv.innerHTML = htmlToRender
 }
 
-const cardsOnDom= () =>{
+const cardsOnDom= (arry) =>{
   let domString="";
-  students.forEach(student => {
+  arry.forEach(student => {
     domString +=`
     <div class="${student.house}">
     
@@ -49,16 +48,21 @@ const addStudentForm = () =>{
       </div>
       <div class="modal-body">
 
-      <div class="form-floating mb-3">
-      <input type="text" class="form-control" id="studentName" placeholder="Studen">
-      <label for="studentName">Student Name</label>
-    </div>
+      <form id="form1">
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button data-bs-dismiss="modal" type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="studentName" placeholder="Student name" required>
+          <label for="floatingInput">Student name</label>
+        </div>
+
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add student</button>
+        </div>
+        
+      </form>
+
     </div>
   </div>
 </div>
@@ -68,7 +72,6 @@ const addStudentForm = () =>{
 }
 
 const houseRandom = () =>{
-  console.log("random works");
  const randNum=Math.floor(Math.random()*4)
  let house=""
  switch (randNum) {
@@ -91,9 +94,29 @@ const houseRandom = () =>{
  return house
 }
 
+
 const startApp= () =>{
-  cardsOnDom()
+  cardsOnDom(students)
   addStudentForm()
 }
 
 startApp()
+
+const createStudent = (e) =>{
+  e.preventDefault();
+
+  console.log("addStudent is called");
+  const newStudentObj={
+    id: students.length+1,
+    name: document.getElementById("studentName").value,
+    house: houseRandom()
+  }
+  console.log(newStudentObj);
+  students.push(newStudentObj)
+  cardsOnDom(students)
+  form.reset()
+}
+
+const form = document.getElementById("form1")
+
+form.addEventListener("submit", createStudent);
