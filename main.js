@@ -1,5 +1,3 @@
-console.log("its alive");
-
 let students=[
   
   {
@@ -15,7 +13,6 @@ const renderToDom= (divId, htmlToRender)=>{
 }
 
 const cardsOnDom= () =>{
-  console.log("cardsOnDom is running");
   let domString="";
   students.forEach(student => {
     domString +=`
@@ -68,6 +65,30 @@ const addStudentForm = () =>{
   `
   
   renderToDom("addStudentContainer", domString)
+}
+
+const houseRandom = () =>{
+  console.log("random works");
+ const randNum=Math.floor(Math.random()*4)
+ let house=""
+ switch (randNum) {
+  case 0:
+    house = "Gryffindor"
+    break;
+ 
+  case 1:
+    house ="Hufflepuff"
+    break;
+
+    case 2:
+    house ="Ravenclaw"
+    break;
+ 
+  case 3:
+    house ="Slytherin"
+    break;
+ }
+ return house
 }
 
 const startApp= () =>{
