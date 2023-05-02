@@ -29,12 +29,12 @@ let students=[
   },
 ];
 
-const renderToDom= (divId, htmlToRender)=>{
+const renderToDom= (divId, htmlToRender) => {
   const selectedDiv=document.getElementById(divId)
   selectedDiv.innerHTML = htmlToRender
 }
 
-const cardsOnDom= (arry) =>{
+const cardsOnDom= (arry) => {
   let domString="<h2>Hogwarts</h2>";
   let domStringExpel="<h2>Voldamort's Army</h2>";
   arry.forEach(student => {
@@ -87,7 +87,7 @@ const cardsOnDom= (arry) =>{
   renderToDom("voldContainer", domStringExpel)
 }
 
-const addStudentForm = () =>{
+const addStudentForm = () => {
   const domString = `
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add student
@@ -125,7 +125,18 @@ const addStudentForm = () =>{
   renderToDom("addStudentContainer", domString)
 }
 
-const houseRandom = () =>{
+const addFilterbtn = () => {
+  const domString = `
+  <button id="allBtn" type="button" class="btn btn-info">All</button>
+  <button id="gryfBtn" type="button" class="btn btn-danger">Gryffindor</button>
+  <button id="raveBtn" type="button" class="btn btn-primary">Ravenclaw</button>
+  <button id="huffBtn" type="button" class="btn btn-warning">Hufflepuff</button>
+  <button id="slytBtn" type="button" class="btn btn-secondary">Slytherin</button>
+  `
+  renderToDom("filterContainer", domString)
+}
+
+const houseRandom = () => {
  const randNum=Math.floor(Math.random()*4)
  let house=""
  switch (randNum) {
@@ -148,15 +159,27 @@ const houseRandom = () =>{
  return house
 }
 
+const filterHouse = (house) => {
+  const newArray = []
+  students.forEach(student => {
 
-const startApp= () =>{
+    if (student.house === house) {
+      newArray.push(student)
+    }
+    
+  });
+  cardsOnDom(newArray)
+}
+
+const startApp= () => {
   cardsOnDom(students)
   addStudentForm()
+  addFilterbtn()
 }
 
 startApp()
 
-const createStudent = (e) =>{
+const createStudent = (e) => {
   e.preventDefault();
 
   console.log("addStudent is called");
@@ -175,8 +198,26 @@ const createStudent = (e) =>{
 
 const form = document.getElementById("form1")
 const body = document.querySelector("body")
+const allBtn = document.querySelector("#allBtn")
+const gryfBtn = document.querySelector("#gryfBtn")
+const huffBtn = document.querySelector("#huffBtn")
+const raveBtn = document.querySelector("#raveBtn")
+const slytBtn = document.querySelector("#slytBtn")
+
+allBtn.addEventListener("click", () => {
+  cardsOnDom(students)
+});
+
+gryfBtn.addEventListener("click", () => { filterHouse("Gryffindor")});
+
+huffBtn.addEventListener("click", () => { filterHouse("Hufflepuff")});
+
+raveBtn.addEventListener("click", () => { filterHouse("Ravenclaw")});
+
+slytBtn.addEventListener("click", () => { filterHouse("Slytherin")});
+
 form.addEventListener("submit", createStudent);
-body.addEventListener("click", (e) =>{
+body.addEventListener("click", (e) => {
   if (e.target.id.includes("expel")){
     const [,id] = e.target.id.split("--")
     const index = students.findIndex(student=>student.id=== Number(id))
