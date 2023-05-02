@@ -2,7 +2,16 @@ let students=[
   {
     id:1,
     name:"Harry Potter",
-    house: "Gryffindor"
+    house: "Gryffindor",
+    expelled: false,
+    dead: false
+  },
+  {
+    id:2,
+    name:"Ron Weasly",
+    house: "Gryffindor",
+    expelled: true,
+    dead: false
   }
 ];
 
@@ -13,24 +22,48 @@ const renderToDom= (divId, htmlToRender)=>{
 
 const cardsOnDom= (arry) =>{
   let domString="";
+  let domStringExpel="";
   arry.forEach(student => {
-    domString +=`
-    <div class="${student.house}">
-    
+    if (student.expelled === true) {
+      
+      domStringExpel +=`
+      <div>
+      
+      </div>
+  
+      <div id="studentInfo">
+        <h2>${student.name}</h2>
+        <h3>Voldamort army</h3>
+        <button id="kill--${student.id}" type="button" class="btn btn-danger">Avada Kedavra</button>
+      </div>`
+  
+        // id:1,
+        // name:"Harry Potter",
+        // house: "Gryffindor",
+        // expelled:
+
+    } else {
+
+      domString +=`
+    <div class="house ${student.house}">
+
     </div>
 
     <div id="studentInfo">
       <h2>${student.name}</h2>
       <h3>${student.house}</h3>
-      <button id="delete--${student.id}" type="button" class="btn btn-danger">Danger</button>
+      <button id="expel--${student.id}" type="button" class="btn btn-danger">Expel</button>
     </div>`
 
       // id:1,
       // name:"Harry Potter",
-      // house: "Gryffindor"
-
+      // house: "Gryffindor",
+      // expelled:
+      
+    }
    });
   renderToDom("firstYearContainer", domString)
+  renderToDom("voldContainer", domStringExpel)
 }
 
 const addStudentForm = () =>{
@@ -109,14 +142,29 @@ const createStudent = (e) =>{
   const newStudentObj={
     id: students.length+1,
     name: document.getElementById("studentName").value,
-    house: houseRandom()
+    house: houseRandom(),
+    expelled: false,
+    dead: false
   }
   console.log(newStudentObj);
   students.push(newStudentObj)
   cardsOnDom(students)
   form.reset()
-}
+} 
 
 const form = document.getElementById("form1")
-
+const body = document.querySelector("body")
 form.addEventListener("submit", createStudent);
+body.addEventListener("click", (e) =>{
+  if (e.target.id.includes("expel")){
+    const [,id] = e.target.id.split("--")
+    const index = students.findIndex(student=>student.id=== Number(id))
+    students[index].expelled=true
+    cardsOnDom(students)
+  }if (e.target.id.includes("kill")){
+    const [,id] = e.target.id.split("--")
+    const index = students.findIndex(student=>student.id === Number(id))
+    students.splice(index,1)
+    cardsOnDom(students)
+  }
+})
