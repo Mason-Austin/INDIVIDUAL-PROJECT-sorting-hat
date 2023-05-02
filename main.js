@@ -43,7 +43,7 @@ const cardsOnDom= (arry) =>{
       domStringExpel +=`
       <div id="studentCard">
         <div id="studentInfo">
-          <div class="house ${student.house}">
+          <div class="house voldArmy">
 
           </div>
 

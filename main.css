@@ -11,7 +11,7 @@
 }
 
 .house{
-  border: blue solid 1px;
+  border: black solid 1px;
   width: 100px;
 }
 
@@ -57,4 +57,10 @@ background-size: contain;
     #946B2D 20px
   );
   background-size: contain;
+}
+
+.voldArmy{
+  background-image: url(Img/Death_Eater_Mark.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
