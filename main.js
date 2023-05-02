@@ -9,10 +9,24 @@ let students=[
   {
     id:2,
     name:"Ron Weasly",
-    house: "Gryffindor",
-    expelled: true,
+    house: "Slytherin",
+    expelled: false,
     dead: false
-  }
+  },
+  {
+    id:3,
+    name:"Ginny Weasly",
+    house: "Hufflepuff",
+    expelled: false,
+    dead: false
+  },
+  {
+    id:4,
+    name:"Fred Weasly",
+    house: "Ravenclaw",
+    expelled: false,
+    dead: false
+  },
 ];
 
 const renderToDom= (divId, htmlToRender)=>{
@@ -21,20 +35,24 @@ const renderToDom= (divId, htmlToRender)=>{
 }
 
 const cardsOnDom= (arry) =>{
-  let domString="";
-  let domStringExpel="";
+  let domString="<h2>Hogwarts</h2>";
+  let domStringExpel="<h2>Voldamort's Army</h2>";
   arry.forEach(student => {
     if (student.expelled === true) {
       
       domStringExpel +=`
-      <div>
-      
-      </div>
-  
-      <div id="studentInfo">
-        <h2>${student.name}</h2>
-        <h3>Voldamort army</h3>
-        <button id="kill--${student.id}" type="button" class="btn btn-danger">Avada Kedavra</button>
+      <div id="studentCard">
+        <div id="studentInfo">
+          <div class="house ${student.house}">
+
+          </div>
+
+          <div>
+              <h3>${student.name}</h3>
+              <h4>Former ${student.house}</h4>
+              <button id="kill--${student.id}" type="button" class="btn btn-danger">Avada Kedavra</button>
+          </div>
+        </div>
       </div>`
   
         // id:1,
@@ -45,15 +63,18 @@ const cardsOnDom= (arry) =>{
     } else {
 
       domString +=`
-    <div class="house ${student.house}">
+      <div id="studentCard">
+        <div id="studentInfo">
 
-    </div>
+          <div class="house ${student.house}">
 
-    <div id="studentInfo">
-      <h2>${student.name}</h2>
-      <h3>${student.house}</h3>
-      <button id="expel--${student.id}" type="button" class="btn btn-danger">Expel</button>
-    </div>`
+          </div>
+          <div>
+            <h3>${student.name}</h3>
+            <h4>${student.house}</h4>
+            <button id="expel--${student.id}" type="button" class="btn btn-danger">Expel</button>
+        </div>
+      </div>`
 
       // id:1,
       // name:"Harry Potter",

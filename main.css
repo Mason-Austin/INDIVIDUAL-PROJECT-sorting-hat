@@ -1,0 +1,60 @@
+#cardsContainer{
+  margin: auto;
+  width: 90%;
+  display: flex;
+  border: black 1px solid;
+  justify-content: space-evenly;
+}
+
+#studentInfo{
+  display: flex;
+}
+
+.house{
+  border: blue solid 1px;
+  width: 100px;
+}
+
+.Gryffindor{
+background-image: url(Img/GryffindorPic.png), repeating-linear-gradient(
+  to right,
+  #740001,
+  #740001 10px,
+  #EEBA30 10px,
+  #EEBA30 20px
+); 
+ background-size: contain;
+}
+
+.Slytherin{
+  background-image: url(Img/SlytherinPic.png), repeating-linear-gradient(
+    to right,
+  #1a472a,
+  #1a472a 10px,
+  #AAAAAA  10px,
+  #AAAAAA 20px
+  );
+background-size: contain;
+}
+
+.Hufflepuff{
+  background-image: url(Img/HufflepuffPic.png), repeating-linear-gradient(
+    to right,
+    #eeba35,
+    #eeba35 10px,
+    #000000 10px,
+    #000000 20px
+  );
+  background-size: contain;
+}
+
+.Ravenclaw{
+  background-image: url(Img/RavenclawPic.png), repeating-linear-gradient(
+    to right,
+    #0F1D4A,
+    #0F1D4A 10px,
+    #946B2D 10px,
+    #946B2D 20px
+  );
+  background-size: contain;
+}
