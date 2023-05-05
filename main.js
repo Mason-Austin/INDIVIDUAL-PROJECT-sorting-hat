@@ -4,28 +4,36 @@ let students=[
     name:"Harry Potter",
     house: "Gryffindor",
     expelled: false,
-    dead: false
+    dead: false,
+    wand: "Dragon heartstring",
+    lineage: "Pure blood"
   },
   {
     id:2,
     name:"Ron Weasly",
     house: "Slytherin",
     expelled: false,
-    dead: false
+    dead: false,
+    wand: "Phoenix feather",
+    lineage: "Half blood"
   },
   {
     id:3,
     name:"Ginny Weasly",
     house: "Hufflepuff",
     expelled: false,
-    dead: false
+    dead: false,
+    wand: "Unicorn tail hair",
+    lineage: "Muggle born"
   },
   {
     id:4,
     name:"Fred Weasly",
     house: "Ravenclaw",
     expelled: false,
-    dead: false
+    dead: false,
+    wand: "Veela hair",
+    lineage: "Pure blood"
   },
 ];
 
@@ -48,17 +56,14 @@ const cardsOnDom= (arry) => {
           </div>
 
           <div>
-              <h3>${student.name}</h3>
+              <h4>${student.name}</h4>
               <h4>Former ${student.house}</h4>
-              <button id="kill--${student.id}" type="button" class="btn btn-danger">Avada Kedavra</button>
+              <h4>Wand Core: ${student.wand}</h4>
+              <h4>Lineage: ${student.lineage}</h4>
+              <button id="kill--${student.id}" type="button" class="button btn btn-danger">Avada Kedavra</button>
           </div>
         </div>
       </div>`
-  
-        // id:1,
-        // name:"Harry Potter",
-        // house: "Gryffindor",
-        // expelled:
 
     } else {
 
@@ -69,17 +74,15 @@ const cardsOnDom= (arry) => {
           <div class="house ${student.house}">
 
           </div>
-          <div>
-            <h3>${student.name}</h3>
-            <h4>${student.house}</h4>
-            <button id="expel--${student.id}" type="button" class="btn btn-danger">Expel</button>
+            <div>
+              <h4>Student: ${student.name}</h4>
+              <h4>House: ${student.house}</h4>
+              <h4>Wand Core: ${student.wand}</h4>
+              <h4>Lineage: ${student.lineage}</h4>
+              <button id="expel--${student.id}" type="button" class="btn btn-danger">Expel</button>
+            </div>
         </div>
       </div>`
-
-      // id:1,
-      // name:"Harry Potter",
-      // house: "Gryffindor",
-      // expelled:
       
     }
    });
@@ -89,7 +92,7 @@ const cardsOnDom= (arry) => {
 
 const addStudentForm = () => {
   const domString = `
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button id="addStudntBtn "type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add student
 </button>
 
@@ -97,7 +100,7 @@ const addStudentForm = () => {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Add new student</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Student house will be assigned automatically</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -159,17 +162,62 @@ const houseRandom = () => {
  return house
 }
 
+const wandRandom = () => {
+  const randNum = Math.floor(Math.random()*3)
+  let wand=""
+ switch (randNum) {
+  case 0:
+    wand = "Dragon heartstring"
+    break;
+ 
+  case 1:
+    wand ="Phoenix feather"
+    break;
+
+    case 2:
+    wand ="Unicorn tail hair"
+    break;
+ }
+ return wand
+}
+
+const lineageRandom = () => {
+  const randNum = Math.floor(Math.random()*3)
+  let lineage=""
+ switch (randNum) {
+  case 0:
+    lineage = "Pure blood"
+    break;
+ 
+  case 1:
+    lineage ="Half blood"
+    break;
+
+    case 2:
+    lineage ="New blood"
+    break;
+ }
+ return lineage
+}
+
 const filterHouse = (house) => {
   const newArray = []
   students.forEach(student => {
 
-    if (student.house === house) {
+    if (student.expelled===false)  {
+     
+      if (student.house === house) {
+        newArray.push(student)
+      }
+
+    }else{
       newArray.push(student)
     }
     
   });
   cardsOnDom(newArray)
 }
+
 
 const startApp= () => {
   cardsOnDom(students)
@@ -182,15 +230,15 @@ startApp()
 const createStudent = (e) => {
   e.preventDefault();
 
-  console.log("addStudent is called");
   const newStudentObj={
     id: students.length+1,
     name: document.getElementById("studentName").value,
     house: houseRandom(),
     expelled: false,
-    dead: false
+    dead: false,
+    wand: wandRandom(),
+    lineage: lineageRandom()
   }
-  console.log(newStudentObj);
   students.push(newStudentObj)
   cardsOnDom(students)
   form.reset()
