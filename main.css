@@ -1,18 +1,53 @@
-#cardsContainer{
+
+
+body{
+  background-color: #212529;
+  color: white;
+}
+
+.modal-content{
+  background: #343a40;
+  color: white;
+}
+
+#cardsContainer, #filterContainer{
   margin: auto;
   width: 90%;
   display: flex;
-  border: black 1px solid;
   justify-content: space-evenly;
 }
 
-#studentInfo{
+#firstYearContainer, #voldContainer{
+  width: 95%;
   display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  
+}
+
+h2{
+  height: 30px;
+  width: 100%;
+  text-align: center;
+  margin: 0 0 2% 0;
+}
+
+#studentCard{
+  padding: 15px;
+  background-color: #343a40;
+  width: 40%;
+  margin: 1% 5%;
+}
+
+#studentInfo{
+  background-color: #495057;
+  margin: auto;
 }
 
 .house{
   border: black solid 1px;
-  width: 100px;
+  width: 100%;
+  height: 180px;
 }
 
 .Gryffindor{
@@ -21,9 +56,10 @@ background-image: url(Img/GryffindorPic.png), repeating-linear-gradient(
   #740001,
   #740001 10px,
   #EEBA30 10px,
-  #EEBA30 20px
-); 
- background-size: contain;
+  #EEBA30 20px); 
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .Slytherin{
@@ -34,7 +70,9 @@ background-image: url(Img/GryffindorPic.png), repeating-linear-gradient(
   #AAAAAA  10px,
   #AAAAAA 20px
   );
-background-size: contain;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .Hufflepuff{
@@ -46,6 +84,8 @@ background-size: contain;
     #000000 20px
   );
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .Ravenclaw{
@@ -57,10 +97,13 @@ background-size: contain;
     #946B2D 20px
   );
   background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .voldArmy{
   background-image: url(Img/Death_Eater_Mark.webp);
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
