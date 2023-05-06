@@ -1,8 +1,12 @@
-
-
 body{
   background-color: #212529;
   color: white;
+  font-family: 'Yusei Magic', sans-serif;;
+}
+
+#addStudentContainer{
+  display: flex;
+  margin: 1%;
 }
 
 .modal-content{
@@ -15,14 +19,16 @@ body{
   width: 90%;
   display: flex;
   justify-content: space-evenly;
+  margin-top: 1%;
 }
 
 #firstYearContainer, #voldContainer{
   width: 95%;
   display: flex;
   flex-flow: row wrap;
-  justify-content: center;
-  
+  align-items: start;
+  justify-content: start;
+
 }
 
 h2{
@@ -37,11 +43,14 @@ h2{
   background-color: #343a40;
   width: 40%;
   margin: 1% 5%;
+  border: black solid 1px;
+  border-radius: 5%;
 }
 
 #studentInfo{
   background-color: #495057;
   margin: auto;
+  padding: 1%;
 }
 
 .house{
@@ -54,9 +63,9 @@ h2{
 background-image: url(Img/GryffindorPic.png), repeating-linear-gradient(
   to right,
   #740001,
-  #740001 10px,
-  #EEBA30 10px,
-  #EEBA30 20px); 
+  #740001 15px,
+  #EEBA30 15px,
+  #EEBA30 30px); 
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -66,9 +75,9 @@ background-image: url(Img/GryffindorPic.png), repeating-linear-gradient(
   background-image: url(Img/SlytherinPic.png), repeating-linear-gradient(
     to right,
   #1a472a,
-  #1a472a 10px,
-  #AAAAAA  10px,
-  #AAAAAA 20px
+  #1a472a 15px,
+  #AAAAAA  15px,
+  #AAAAAA 30px
   );
   background-size: contain;
   background-repeat: no-repeat;
@@ -79,9 +88,9 @@ background-image: url(Img/GryffindorPic.png), repeating-linear-gradient(
   background-image: url(Img/HufflepuffPic.png), repeating-linear-gradient(
     to right,
     #eeba35,
-    #eeba35 10px,
-    #000000 10px,
-    #000000 20px
+    #eeba35 15px,
+    #000000 15px,
+    #000000 30px
   );
   background-size: contain;
   background-repeat: no-repeat;
@@ -92,9 +101,9 @@ background-image: url(Img/GryffindorPic.png), repeating-linear-gradient(
   background-image: url(Img/RavenclawPic.png), repeating-linear-gradient(
     to right,
     #0F1D4A,
-    #0F1D4A 10px,
-    #946B2D 10px,
-    #946B2D 20px
+    #0F1D4A 15px,
+    #946B2D 15px,
+    #946B2D 30px
   );
   background-size: contain;
   background-repeat: no-repeat;
@@ -103,7 +112,7 @@ background-image: url(Img/GryffindorPic.png), repeating-linear-gradient(
 
 .voldArmy{
   background-image: url(Img/Death_Eater_Mark.webp);
-  background-size: contain;
+  background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
 }
