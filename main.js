@@ -91,8 +91,8 @@ const cardsOnDom= (arry) => {
 }
 
 const addStudentForm = () => {
-  const domString = `
-<button id="addStudntBtn "type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  const domString =`<h2>Welcome professor</h2>
+<button id="addStudntBtn "type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Add student
 </button>
 
@@ -100,7 +100,7 @@ const addStudentForm = () => {
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Student house will be assigned automatically</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Student will be assigned automatically</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
